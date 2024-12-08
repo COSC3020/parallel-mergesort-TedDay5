@@ -13,12 +13,15 @@ async function parallelMergeSort(array, low, high, temp) {
 }
 
 function merge(array, low, middle, high, temp) {
+    let left = low;
+    let right = middle + 1;
+    
     for(let i = low; i <= high; i++) {
-        if(low <= middle && (middle + 1 > high || array[low] < array[middle + 1])) {
-            temp[i] = array[low++];
+        if(left <= middle && (right > high || array[left] < array[right])) {
+            temp[i] = array[left++];
         }
         else {
-            temp[i] = array[(middle + 1)++];
+            temp[i] = array[right++];
         }
     }
     for(let i = low; i <= high; i++) {
