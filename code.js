@@ -8,8 +8,8 @@ async function parallelMergeSort(array, low, high, temp) {
     const left = parallelMergeSort(array, low, middle, temp);
     const right = parallelMergeSort(array, middle + 1, high, temp);
 
-    await Promise.all([left][right])
-    merge(array, low, middle, high, temp)
+    await Promise.all([left, right]);
+    merge(array, low, middle, high, temp);
 }
 
 function merge(array, low, middle, high, temp) {
